@@ -152,3 +152,5 @@ If you are already pretty familiar with `R` and you want to dig a little deeper,
 
 Another great resource for learning how to code and everything that goes along with it, including operating in the terminal and using Git comes from an economics professor at the University of Oregon. [Grant McDermott](https://grantmcdermott.com). He has a class on Data Science for Economists where he discusses R, Git, the Terminal and the relationship between these three computer "tools". He also discusses cool things like parallel programming and web-scrapping data. 
 
+
+PRactice
