@@ -37,11 +37,11 @@ Also as a quick aside, these steps are being replicated from Jenny Bryan's onlin
     
 2. Install Git
 
-Since it will be easier for me to accommodate Mac and Windows users, I am going pull up on screen how to do this ans walk everyone through it. 
+Since it will be easier for me to accommodate Mac and Windows users, I am going pull up on screen how to do this and walk everyone through it. 
 
 3. Introduce Yourself to Git 
 
-We need to introduce our Git account with our computer that is operating Git. Think of it as a way for your computer and the repository you are working in to communicate. We will all do this in R Studio since using Mac is relatively straightforward, and windows is .... not.
+We need to introduce our Git account with our computer that is operating Git. Think of it as a way for your computer and the repository you are working in to communicate. We will all do this in R Studio since using Mac is relatively straightforward, and Windows is .... not.
 
 ```{r}
 ##install.packages("use.this")
@@ -58,6 +58,7 @@ We will work through Chapter 9 of Jenny Bryan's [Happy Git](https://happygitwith
 
 5. Connecting Git and R Studio
 
+  
   1. Our first Repo!
   
   * Go to [GitHub](https://github.com) and log in. 
