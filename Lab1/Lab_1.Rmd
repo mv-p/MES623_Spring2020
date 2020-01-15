@@ -15,17 +15,17 @@ knitr::opts_chunk$set(echo = TRUE)
 
 1. Click [here](https://cran.r-project.org) to download `R`.
 2. Click [here](https://www.rstudio.com/products/rstudio/) to download "R Studio," the Integrated Development Environment (IDE) that allows users to interact with `R`.
-  * Unique aspect about Studio IDE is that we can run languages besides `R` in them. This presents a good opportunity if code in a language such as python is needed for certain analysis. 
-  * R Studio also provides an excellent platform for reproductive research. This document is run in Markdown, and provides both the code and output to demonstrate the process of data cleaning and analysis. 
+  * Unique aspect about Studio IDE is that we can run languages besides `R` in them. This presents a good opportunity if code in another language such is needed for certain analysis. [Other Language Enginges](https://bookdown.org/yihui/rmarkdown/language-engines.html)
+  * R Studio also provides an excellent platform for reproducible research. As an example this document is created in RMarkdown. The GitHub repository for this class holds both the PDF and .Rmd (RMarkdown File). 
     + A good resource for everything R Markdown can be found [here](https://bookdown.org/yihui/rmarkdown/)
-    + There are an endless list of things that can be done in markdown, from writing memos, books, or dissertations to creating websites and apps. 
-      + (Which if you're interested there will be a Wetlab Website Night March 18th at 7pm with free drink tickets and food! A survey will be sent out for RSVPs in the coming weeks. Keep them eyes open.)
+      + Check the link if you want to see more ways that RMarkdown can be used to accomplish different tasks. 
+      + If you're interested there will be a Wetlab Website Night March 18th at 7pm with free drink tickets and food! A survey will be sent out for RSVPs in the coming weeks. Keep them eyes open.
 
 # Git with It!
 
-Since you all will be working in teams on projects for this class I figure that creating a repository for this class may be a good way to introduce everyone to collaborative work. So let's start out by creating Git Hub accounts if you don't have one yet. If you do, great. Sit tight and help me, help you. 
+Git is a version control application that is increasingly being used throughout the research community. Since we will be working in groups in this class for projects, it may be a cool way to familiarize each of you with this app. Whether you are interested in going into research or not, companies that work with data analysis are increasingly using GitHub throughout their departments so it is a skill that may be important to have. Also, if you are interested in doing other things such as creating websites or building resumes, you can search through other's GitHub repositories for outlines that you can build off in creating your own project. 
 
-Also as a quick aside, these steps are being replicated from Jenny Bryan's online book [Happy Git](https://happygitwithr.com). Which will be a great place to help you through any of your Git and Git Hub questions or concerns. 
+We'll start out by creating a GitHub account. Instead of reinventing the wheel, we are going to follow the steps provided by Jenny Bryan's [Happy Git](https://happygitwithr.com). The set up will be done in class, but if you have any interest in diving a bit deeper, or if you run into any problems in your GitHub endeavors this is a great place to look for help!
 
 1. Go to [here](github.com) and create a Git Hub account. 
   
@@ -35,9 +35,7 @@ Also as a quick aside, these steps are being replicated from Jenny Bryan's onlin
     + Lower case makes everything easier. And using underscores or hyphens when separating words is probably best. You never know what other programming languages someone is using, and these are universally safe. 
     + Since we are all students at the University we get free access to Git Hub Pro. This is beneficial for having private repositories. Such as the one we will be working in, where people will have to be invited to see and contribute to the information. 
     
-2. Install Git
-
-Since it will be easier for me to accommodate Mac and Windows users, I am going pull up on screen how to do this and walk everyone through it. 
+2. Install Git: 
 
 3. Introduce Yourself to Git 
 
