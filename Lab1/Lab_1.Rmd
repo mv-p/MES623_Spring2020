@@ -14,30 +14,81 @@ knitr::opts_chunk$set(echo = TRUE)
 # Installation 
 
 1. Click [here](https://cran.r-project.org) to download `R`.
-2. Click [here](https://www.rstudio.com/products/rstudio/) to download "RStudio," the Integrated Development Environment (IDE) that allows users to interact with `R`.
-  * Unique aspect about RStuido IDE is that we can run languages besides `R` in them. This presents a good opportunity if code in a language such as python is needed for certain analysis. 
+2. Click [here](https://www.rstudio.com/products/rstudio/) to download "R Studio," the Integrated Development Environment (IDE) that allows users to interact with `R`.
+  * Unique aspect about Studio IDE is that we can run languages besides `R` in them. This presents a good opportunity if code in a language such as python is needed for certain analysis. 
   * R Studio also provides an excellent platform for reproductive research. This document is run in Markdown, and provides both the code and output to demonstrate the process of data cleaning and analysis. 
     + A good resource for everything R Markdown can be found [here](https://bookdown.org/yihui/rmarkdown/)
-    + There are an endless list of things that can be done in markdown, from writing memos, books, or disertations to creating websites and apps. 
+    + There are an endless list of things that can be done in markdown, from writing memos, books, or dissertations to creating websites and apps. 
       + (Which if you're interested there will be a Wetlab Website Night March 18th at 7pm with free drink tickets and food! A survey will be sent out for RSVPs in the coming weeks. Keep them eyes open.)
 
 # Git with It!
 
-Since you all will be working in teams on projects for this class I figure that creating a repository for this class may be a good way to introduce everyone to colloborative work. So let's start out by creating GitHub accounts if you don't have one yet. If you do, great. Sit tight and help me, help you. 
+Since you all will be working in teams on projects for this class I figure that creating a repository for this class may be a good way to introduce everyone to collaborative work. So let's start out by creating Git Hub accounts if you don't have one yet. If you do, great. Sit tight and help me, help you. 
 
-1. Go to [here](github.com) and create a GitHub account. 
+Also as a quick aside, these steps are being replicated from Jenny Bryan's online book [Happy Git](https://happygitwithr.com). Which will be a great place to help you through any of your Git and Git Hub questions or concerns. 
+
+1. Go to [here](github.com) and create a Git Hub account. 
   
   * A couple suggestions 
-    + Incroporate your name into your account name, it helps people identify who they are working with in the future. 
+    + Incorporate your name into your account name, it helps people identify who they are working with in the future. 
     + Less is more. Use as few characters as possible, this makes it easier when creating paths or passing along your username. 
     + Lower case makes everything easier. And using underscores or hyphens when separating words is probably best. You never know what other programming languages someone is using, and these are universally safe. 
-    + Since we are all students at the University we get free access to GitHub Pro. This is beneficial for having private repositories. Such as the one we will be working in, where people will have to be invited to see and contribute to the information. 
+    + Since we are all students at the University we get free access to Git Hub Pro. This is beneficial for having private repositories. Such as the one we will be working in, where people will have to be invited to see and contribute to the information. 
     
 2. Install Git
 
-Since it will be easier for me to accomodate Mac and Windows users, I am going pull up on screen how to do this ans walk everyone through it. 
+Since it will be easier for me to accommodate Mac and Windows users, I am going pull up on screen how to do this ans walk everyone through it. 
 
 3. Introduce Yourself to Git 
+
+We need to introduce our Git account with our computer that is operating Git. Think of it as a way for your computer and the repository you are working in to communicate. We will all do this in R Studio since using Mac is relatively straightforward, and windows is .... not.
+
+```{r}
+##install.packages("use.this")
+
+library(usethis)
+#use_git_config(user.name = "Matt Varkony", user.email = mvarkony@rsmas.miami.edu)
+```
+
+You can use whichever name you would like, this is just how Git will identify who is making the changes within the repository. However, the user email that you input must be the exact same as the email you used to create your git account. 
+
+4. Connecting to the Hub
+
+We will work through Chapter 9 of Jenny Bryan's [Happy Git](https://happygitwithr.com/push-pull-github.html) tutorial. 
+
+5. Connecting Git and R Studio
+
+  1. Our first Repo!
+  
+  * Go to [GitHub](https://github.com) and log in. 
+   
+  * Let's click the green "New repository" button. 
+      + Give it any title you want, such as `myrepo`
+      + Description: Describe what we are doing, so in this case: testing my setup 
+      + Public 
+      + Yes initialize this project with a `READ ME`
+  * Copy the URL via the green "Clone or Download" button.
+    
+  2. Clone this repository to your computer via R Studio 
+    
+  * Open R Studio and go to `File --> New Project --> Version Control --> Git`. In "Repository URL" paste the URL of your Git Hub repository. 
+  * Accept the default repo name (it should be the same as your repo on Git Hub)
+  * Save your repo in your class folder for this class. This is important to remember that you know where you are saving these repos. 
+  * Check "Open in new session" and click "Create Project". 
+    
+  3. Local Changes to the Master File 
+  
+  * Add something to your read me file. A word, a letter. Doesn't matter just something that adds to the Read Me file. 
+  
+  * Commit these changes ... 
+      + Click the Git tab in the upper right hand corner of R Studio
+      + Check the "Staged" box for `README.md` file
+      + Click the Commit Button
+      + Type a message in the commit box signifying what you did. ie) Commit from R Studio
+      + Click Commit
+      + Click the green arrow and push your changes to the master repo. 
+    
+    * Now go to your repo on your internet window and check if the updates went through. If they did, great! We are done! 
 
 # To Set Directory, or Not?
 
@@ -50,11 +101,11 @@ With that being said, lets start out by creating an  project that is specificall
   * Here we can input the directory name. Call it something that makes sense to you. For me I called it `TA_MES623`. 
   * Then we are going to select the file path that we want it to be located in. For myself, I have folders for each class. So within my file path looks like this `"~/Desktop/College/MES_PhD/MES_623"`. 
   
-Okay, great. We have created a project in the directory of our chosing. This will help us stay organized in the future when we are dealing with bigger projects that require multiple scripts for analysis. 
+Okay, great. We have created a project in the directory of our choosing. This will help us stay organized in the future when we are dealing with bigger projects that require multiple scripts for analysis. 
 
 Next, it is **always** important to work within an `R Script`. This way we can track the functions and steps we use in our analysis. Think of it as a recorded history that is easily retrieved.
 
-The way to open an `R Script` is to go to the top left corner of `R Studio` and click on the paper with the plus sign on top of it. Select `R Script` and we are in business. Typically I like to write a quick comment to start this script that describes what I will be doing. A great way to comment things out in R is to use the `#`. I typically include two `##` because there is a keyboard shortcut that removes one `#` and if I accidently hit this, then I don't have to worry about uncommenting my code. 
+The way to open an `R Script` is to go to the top left corner of `R Studio` and click on the paper with the plus sign on top of it. Select `R Script` and we are in business. Typically I like to write a quick comment to start this script that describes what I will be doing. A great way to comment things out in R is to use the `#`. I typically include two `##` because there is a keyboard shortcut that removes one `#` and if I accidentally hit this, then I don't have to worry about uncommenting my code. 
 
 # Packages: If You Can Imagine It, They've Probably Got It!
 
@@ -64,7 +115,7 @@ There are a few main packages that will be the workhorses of your day to day dat
 ##install.packages("tidyverse")
 library(tidyverse)
 ```
-The tidy language was created as a way to streamline and increase the ease of data manipulation and visualization. As you can see, `tidyr`, `dplyr`, and `ggplot2` are included in the `tidyverse`. These packages are synonomous with `R` programming language at this point. Once you learn and become comfortable with the functions in these pacakges, data analysis will become 100x easier. 
+The tidy language was created as a way to streamline and increase the ease of data manipulation and visualization. As you can see, `tidyr`, `dplyr`, and `ggplot2` are included in the `tidyverse`. These packages are synonymous with `R` programming language at this point. Once you learn and become comfortable with the functions in these packages, data analysis will become 100x easier. 
 
 Another package that I like to load when I am doing data manipulation is called `tidylog`. This is a package I recently found, and it does a great job of summarizing what is going on "under the hood" of your function calls. It does not come with the `tidyverse` package, but it works well in tandem with the package. 
 
@@ -81,4 +132,21 @@ names(iris)
 #check the structure of these variables 
 str(iris)
 ```
+
+
+# Data Wrangling Resources 
+
+The most important thing to understand about learning to program is practice and exposure is the only way to get better. There isn't a pressing requirement to understand the theory behind computer science to be a good data analyzer. Being functional takes time, including failing, getting stuck, and working through your problems. With that being said, the best resource for all questions related to coding is the `Google` search bar. Believe that if you have a question about your code, someone else (or everyone else) has had a similar question. That means that the answer is somewhere online. The best coders are those that know how to ask the right question to get the result they want. So if you ever get stuck, try searching for the problem you are facing online! 
+
+  **Websites**
+  
+[Stack Overflow](https://stackoverflow.com/questions) is a great resource, that will repeatedly pop up in your `Google` searches for code related questions. 
+
+Another great resource for Data Analysis is [R for Data Science](https://r4ds.had.co.nz). Here you can go step by step through chapters and perfect your data manipulation skills. Something that is very important for preparing your data for analysis. The answer key to end of the question chapters can be found [here](https://jrnold.github.io/r4ds-exercise-solutions/). 
+
+One of the individuals heavily involved in the R coding language is [Jenny Bryan](https://jennybryan.org). She was a professor at the University of British Columbia, and now she is part of Hadley Wickham's team at `RStudio`. They are the individuals that develop and maintain the open-source software that we all use. Her website is a treasure trove of resources for `R` and `Github`. 
+
+If you are already pretty familiar with `R` and you want to dig a little deeper, the [Advance R](https://adv-r.hadley.nz/index.html) workbook by Hadley Wickham is a great place to up your coding game. He goes through the theory a little more, helping explain conventions used in programming. By understanding the rationale behind your code, it allows you to tweak script in a way that is more efficient and accommodating to your needs. As they say, in order to break the rules you need to understand the game. 
+
+Another great resource for learning how to code and everything that goes along with it, including operating in the terminal and using Git comes from an economics professor at the University of Oregon. [Grant McDermott](https://grantmcdermott.com). He has a class on Data Science for Economists where he discusses R, Git, the Terminal and the relationship between these three computer "tools". He also discusses cool things like parallel programming and web-scrapping data. 
 
