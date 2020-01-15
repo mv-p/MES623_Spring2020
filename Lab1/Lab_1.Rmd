@@ -23,8 +23,21 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Git with It!
 
-Since you all will be working in teams on projects for this class I figure that creating a 
+Since you all will be working in teams on projects for this class I figure that creating a repository for this class may be a good way to introduce everyone to colloborative work. So let's start out by creating GitHub accounts if you don't have one yet. If you do, great. Sit tight and help me, help you. 
 
+1. Go to [here](github.com) and create a GitHub account. 
+  
+  * A couple suggestions 
+    + Incroporate your name into your account name, it helps people identify who they are working with in the future. 
+    + Less is more. Use as few characters as possible, this makes it easier when creating paths or passing along your username. 
+    + Lower case makes everything easier. And using underscores or hyphens when separating words is probably best. You never know what other programming languages someone is using, and these are universally safe. 
+    + Since we are all students at the University we get free access to GitHub Pro. This is beneficial for having private repositories. Such as the one we will be working in, where people will have to be invited to see and contribute to the information. 
+    
+2. Install Git
+
+Since it will be easier for me to accomodate Mac and Windows users, I am going pull up on screen how to do this ans walk everyone through it. 
+
+3. Introduce Yourself to Git 
 
 # To Set Directory, or Not?
 
@@ -44,3 +57,28 @@ Next, it is **always** important to work within an `R Script`. This way we can t
 The way to open an `R Script` is to go to the top left corner of `R Studio` and click on the paper with the plus sign on top of it. Select `R Script` and we are in business. Typically I like to write a quick comment to start this script that describes what I will be doing. A great way to comment things out in R is to use the `#`. I typically include two `##` because there is a keyboard shortcut that removes one `#` and if I accidently hit this, then I don't have to worry about uncommenting my code. 
 
 # Packages: If You Can Imagine It, They've Probably Got It!
+
+There are a few main packages that will be the workhorses of your day to day data work. So let's start by installing and calling the main one, if you haven't already.
+
+```{r, message=FALSE}
+##install.packages("tidyverse")
+library(tidyverse)
+```
+The tidy language was created as a way to streamline and increase the ease of data manipulation and visualization. As you can see, `tidyr`, `dplyr`, and `ggplot2` are included in the `tidyverse`. These packages are synonomous with `R` programming language at this point. Once you learn and become comfortable with the functions in these pacakges, data analysis will become 100x easier. 
+
+Another package that I like to load when I am doing data manipulation is called `tidylog`. This is a package I recently found, and it does a great job of summarizing what is going on "under the hood" of your function calls. It does not come with the `tidyverse` package, but it works well in tandem with the package. 
+
+```{r}
+#install.packages("tidylog")
+library(tidylog)
+##just as an example we will do some quick data maniuplation with the stock data set in R
+
+#this command loads in the data to our Global Enviornment, even though we can't see it
+#it is part of the utils package. 
+data(iris)
+#check the names of the variables in the package
+names(iris)
+#check the structure of these variables 
+str(iris)
+```
+
