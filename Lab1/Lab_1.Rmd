@@ -94,11 +94,13 @@ We will work through Chapter 9 of Jenny Bryan's [Happy Git](https://happygitwith
 
 As I have read over and over, setting a directory is a slippery slope. Its a good place to start, but a bad place to stay in. With that being said, why even start there? In this class you will have to complete four group assignments. This creates a perfect opportunity to practice efficient and effective coding and project management. 
 
-With that being said, lets start out by creating an  project that is specifically for labs we will be doing this semester. Once we have `R` and `RStudio` downloaded click... 
+Lets start out by creating an  project that is specifically for labs we will be doing this semester. Once we have `R` and `RStudio` downloaded click... 
     
+  * Let's find the Git Repo that you want to clone. Search `mv-p/MES623_Spring2020`
+  * Clone this repository
   * Open `RStudio` and go to the drop down `file` menu and select `New Project`
-  * Click on `New Directory` --> `New Project`
-  * Here we can input the directory name. Call it something that makes sense to you. For me I called it `TA_MES623`. 
+  * Click on `Version Control` --> `GIT` paste the copied repo 
+  * I typically leave project directory name the same as the repo name to keep things simple
   * Then we are going to select the file path that we want it to be located in. For myself, I have folders for each class. So within my file path looks like this `"~/Desktop/College/MES_PhD/MES_623"`. 
   
 Okay, great. We have created a project in the directory of our choosing. This will help us stay organized in the future when we are dealing with bigger projects that require multiple scripts for analysis. 
