@@ -35,7 +35,7 @@ We'll start out by creating a GitHub account. Instead of reinventing the wheel, 
     + Lower case makes everything easier. And using underscores or hyphens when separating words is probably best. You never know what other programming languages someone is using, and these are universally safe. 
     + Since we are all students at the University we get free access to Git Hub Pro. This is beneficial for having private repositories. Such as the one we will be working in, where people will have to be invited to see and contribute to the information. 
     
-2. Install Git: 
+2. Install Git: Use [Chapter 6](https://happygitwithr.com/install-git.html) for directions. Once you are set up you are done. 
 
 3. Introduce Yourself to Git 
 
