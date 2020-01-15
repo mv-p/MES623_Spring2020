@@ -35,11 +35,15 @@ We'll start out by creating a GitHub account. Instead of reinventing the wheel, 
     + Lower case makes everything easier. And using underscores or hyphens when separating words is probably best. You never know what other programming languages someone is using, and these are universally safe. 
     + Since we are all students at the University we get free access to Git Hub Pro. This is beneficial for having private repositories. Such as the one we will be working in, where people will have to be invited to see and contribute to the information. 
     
-2. Install Git: Use [Chapter 6](https://happygitwithr.com/install-git.html) for directions. Once you are set up you are done. 
+2. Install Git: Use [Chapter 6](https://happygitwithr.com/install-git.html) for directions. Once you are set up you are done and can move to the next step. This step won't be needed again. 
 
 3. Introduce Yourself to Git 
 
-We need to introduce our Git account with our computer that is operating Git. Think of it as a way for your computer and the repository you are working in to communicate. We will all do this in R Studio since using Mac is relatively straightforward, and Windows is .... not.
+We need to create a connection between the computer we are working from and our GitHub account. Think of it as a way for your computer and repositories from GitHub to communicate. We will all do this in R Studio. 
+
+For your user.name it can be whatever you would like to identified as when you are making changes to documents within a GitHub. I chose to use my full name to make it easy for future collaborators.
+
+However, for your user.email you need to make sure that the email you type in is the email you used to create your GitHub account. 
 
 ```{r}
 ##install.packages("use.this")
@@ -48,77 +52,55 @@ library(usethis)
 #use_git_config(user.name = "Matt Varkony", user.email = mvarkony@rsmas.miami.edu)
 ```
 
-You can use whichever name you would like, this is just how Git will identify who is making the changes within the repository. However, the user email that you input must be the exact same as the email you used to create your git account. 
 
-4. Connecting to the Hub
+4. Connecting to the Hub: Use Chapter 9 of Jenny Bryan's [Happy Git](https://happygitwithr.com/push-pull-github.html). 
 
-We will work through Chapter 9 of Jenny Bryan's [Happy Git](https://happygitwithr.com/push-pull-github.html) tutorial. 
+This process will take you through the terminal set up. Once you have done this, your interaction with the terminal will be whatever you want it to be. You won't need to use the terminal in your everyday GitHubbing unless you would like to. If that is the case there are more resources for learning how to interact with the terminal and GitHub that are beyond the scope of this setup. However, [here](https://git-scm.com/book/en/v2) is a good starting point. 
 
-5. Connecting Git and R Studio
+Once you have completed the setup with GitHub on your computer you are ready to follow a similar procedure that links RStudio, Your Computer, and GitHub together for seemless editing. 
+
+As an aside you may be asked to input your username and password while going through this step; however, most likely this will be the only time that you are required to verify your identity. If this continues to pop up see [Chapter 10](https://happygitwithr.com/credential-caching.html). 
+
+5. Connecting Git and R Studio: Again, there is no need to reinvent the wheel so we will go to Jenny Bryan's explanation of connecting RStudtio to GitHub from this [Chapter 12](https://happygitwithr.com/rstudio-git-github.html). 
 
   
-  1. Our first Repo!
-  
-  * Go to [GitHub](https://github.com) and log in. 
-   
-  * Let's click the green "New repository" button. 
-      + Give it any title you want, such as `myrepo`
-      + Description: Describe what we are doing, so in this case: testing my setup 
-      + Public 
-      + Yes initialize this project with a `READ ME`
-  * Copy the URL via the green "Clone or Download" button.
-    
-  2. Clone this repository to your computer via R Studio 
-    
-  * Open R Studio and go to `File --> New Project --> Version Control --> Git`. In "Repository URL" paste the URL of your Git Hub repository. 
-  * Accept the default repo name (it should be the same as your repo on Git Hub)
-  * Save your repo in your class folder for this class. This is important to remember that you know where you are saving these repos. 
-  * Check "Open in new session" and click "Create Project". 
-    
-  3. Local Changes to the Master File 
-  
-  * Add something to your read me file. A word, a letter. Doesn't matter just something that adds to the Read Me file. 
-  
-  * Commit these changes ... 
-      + Click the Git tab in the upper right hand corner of R Studio
-      + Check the "Staged" box for `README.md` file
-      + Click the Commit Button
-      + Type a message in the commit box signifying what you did. ie) Commit from R Studio
-      + Click Commit
-      + Click the green arrow and push your changes to the master repo. 
-    
-    * Now go to your repo on your internet window and check if the updates went through. If they did, great! We are done! 
+Awesome! We are all setting up your computer to GitHub. Now we are one step closer to working collabortively with others in class. I am still working on the details of how we will do this so that groups can be set up, but regardless this is a good way to manage version control of your projects for this class. While it may not seem necessary right away, this is a good skill to have for both future research or work within industry teams.   
 
 # To Set Directory, or Not?
 
-As I have read over and over, setting a directory is a slippery slope. Its a good place to start, but a bad place to stay in. With that being said, why even start there? In this class you will have to complete four group assignments. This creates a perfect opportunity to practice efficient and effective coding and project management. 
+I have read over and over, setting a directory is a slippery slope. Its a good place to start, but a bad place to stay. Therefore, I will suggest that you create a new project for an assignment or group of assignments that have over-lap. 
 
-Lets start out by creating an  project that is specifically for labs we will be doing this semester. Once we have `R` and `RStudio` downloaded click... 
+In this class you will have to complete four group assignments. This creates a perfect opportunity to practice efficient and effective coding and project management. 
+
+Lets start out by creating an  project that is specifically for labs we will be doing this semester. Once we have `R` and `RStudio` we can open `RStudio`. From here we will 
+
+  * Go to File > New Directory (creates a new Folder) > New Project
+    + Here you will input the new directory name. This will be the name of the folder that the project and its contents are held in. 
+    + Make sure that this folder is in a location (a subdirectory) that you are comfortable storing your work in. 
+    + Now your new project is set up, and we can work on linking that to GitHub later. [Chapter 16 and 17](https://happygitwithr.com/existing-github-first.html) does a good job of explaining this. 
     
-  * Let's find the Git Repo that you want to clone. Search `mv-p/MES623_Spring2020`
-  * Clone this repository
-  * Open `RStudio` and go to the drop down `file` menu and select `New Project`
-  * Click on `Version Control` --> `GIT` paste the copied repo 
-  * I typically leave project directory name the same as the repo name to keep things simple
-  * Then we are going to select the file path that we want it to be located in. For myself, I have folders for each class. So within my file path looks like this `"~/Desktop/College/MES_PhD/MES_623"`. 
   
-Okay, great. We have created a project in the directory of our choosing. This will help us stay organized in the future when we are dealing with bigger projects that require multiple scripts for analysis. 
+Once this new project is created it is **always** important to work within an `R Script`. This way we can track the functions and steps we use in our analysis. Think of it as a recorded history that is easily retrieved.
 
-Next, it is **always** important to work within an `R Script`. This way we can track the functions and steps we use in our analysis. Think of it as a recorded history that is easily retrieved.
+The way to open an `R Script` is to go to the top left corner of `R Studio` and click on the paper with the plus sign on top of it. Select `R Script` and a new window will drop down that you can start doing work in.
+  * To run script while inside this `R Script` you need to go to the end of your commmand and click `command + enter`. This is a key board shortcut. You can also highlight the code and click the run button in the upper right hand corner of the window. 
 
-The way to open an `R Script` is to go to the top left corner of `R Studio` and click on the paper with the plus sign on top of it. Select `R Script` and we are in business. Typically I like to write a quick comment to start this script that describes what I will be doing. A great way to comment things out in R is to use the `#`. I typically include two `##` because there is a keyboard shortcut that removes one `#` and if I accidentally hit this, then I don't have to worry about uncommenting my code. 
+Typically I like to write a quick comment to start this script that describes what I will be doing. A great way to comment things out in R is to use the `#`. I typically include two `##` because there is a keyboard shortcut that removes one `#` and if I accidentally hit this, then I don't have to worry about uncommenting my code. 
 
 # Packages: If You Can Imagine It, They've Probably Got It!
 
-There are a few main packages that will be the workhorses of your day to day data work. So let's start by installing and calling the main one, if you haven't already.
+There are a few main packages that will be the workhorses of your day to day data work. So let's start by installing and calling the main one, if you haven't already. I've commented out the install.packages command because I already have this package installed. You only need to install a package once for it to be stored in your R folder. 
+
+However, for us right now, when using a specific package we will call `library(package.name)`. This equips our current `R` session with the package that has the functions we want to use for our data work. 
 
 ```{r, message=FALSE}
 ##install.packages("tidyverse")
 library(tidyverse)
 ```
-The tidy language was created as a way to streamline and increase the ease of data manipulation and visualization. As you can see, `tidyr`, `dplyr`, and `ggplot2` are included in the `tidyverse`. These packages are synonymous with `R` programming language at this point. Once you learn and become comfortable with the functions in these packages, data analysis will become 100x easier. 
 
-Another package that I like to load when I am doing data manipulation is called `tidylog`. This is a package I recently found, and it does a great job of summarizing what is going on "under the hood" of your function calls. It does not come with the `tidyverse` package, but it works well in tandem with the package. 
+The tidy language was created by Hadley Wickham as a way to streamline and increase the ease of data manipulation and visualization. As you can see, `tidyr`, `dplyr`, and `ggplot2` are included in the `tidyverse`. These packages are synonymous with the `R` programming language at this point. Once you learn and become comfortable with the functions in these packages, data analysis will become 100x easier. 
+
+Another package that I like to load when I am doing data manipulation is called `tidylog`. This is package does a great job of summarizing what is going on "under the hood" of your function calls. It does not come with the `tidyverse` package, but it works well in tandem with the package. 
 
 ```{r}
 #install.packages("tidylog")
@@ -152,4 +134,4 @@ If you are already pretty familiar with `R` and you want to dig a little deeper,
 Another great resource for learning how to code and everything that goes along with it, including operating in the terminal and using Git comes from an economics professor at the University of Oregon. [Grant McDermott](https://grantmcdermott.com). He has a class on Data Science for Economists where he discusses R, Git, the Terminal and the relationship between these three computer "tools". He also discusses cool things like parallel programming and web-scrapping data. 
 
 
-PRactice
+
