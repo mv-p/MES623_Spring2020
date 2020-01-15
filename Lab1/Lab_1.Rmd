@@ -1,0 +1,46 @@
+---
+title: "R Intro MES 623 Spring 2020"
+author: "Matthew Varkony"
+date: "`r format(Sys.Date(), '%d %B %Y')`"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Installation 
+
+1. Click [here](https://cran.r-project.org) to download `R`.
+2. Click [here](https://www.rstudio.com/products/rstudio/) to download "RStudio," the Integrated Development Environment (IDE) that allows users to interact with `R`.
+  * Unique aspect about RStuido IDE is that we can run languages besides `R` in them. This presents a good opportunity if code in a language such as python is needed for certain analysis. 
+  * R Studio also provides an excellent platform for reproductive research. This document is run in Markdown, and provides both the code and output to demonstrate the process of data cleaning and analysis. 
+    + A good resource for everything R Markdown can be found [here](https://bookdown.org/yihui/rmarkdown/)
+    + There are an endless list of things that can be done in markdown, from writing memos, books, or disertations to creating websites and apps. 
+      + (Which if you're interested there will be a Wetlab Website Night March 18th at 7pm with free drink tickets and food! A survey will be sent out for RSVPs in the coming weeks. Keep them eyes open.)
+
+# Git with It!
+
+Since you all will be working in teams on projects for this class I figure that creating a 
+
+
+# To Set Directory, or Not?
+
+As I have read over and over, setting a directory is a slippery slope. Its a good place to start, but a bad place to stay in. With that being said, why even start there? In this class you will have to complete four group assignments. This creates a perfect opportunity to practice efficient and effective coding and project management. 
+
+With that being said, lets start out by creating an  project that is specifically for labs we will be doing this semester. Once we have `R` and `RStudio` downloaded click... 
+    
+  * Open `RStudio` and go to the drop down `file` menu and select `New Project`
+  * Click on `New Directory` --> `New Project`
+  * Here we can input the directory name. Call it something that makes sense to you. For me I called it `TA_MES623`. 
+  * Then we are going to select the file path that we want it to be located in. For myself, I have folders for each class. So within my file path looks like this `"~/Desktop/College/MES_PhD/MES_623"`. 
+  
+Okay, great. We have created a project in the directory of our chosing. This will help us stay organized in the future when we are dealing with bigger projects that require multiple scripts for analysis. 
+
+Next, it is **always** important to work within an `R Script`. This way we can track the functions and steps we use in our analysis. Think of it as a recorded history that is easily retrieved.
+
+The way to open an `R Script` is to go to the top left corner of `R Studio` and click on the paper with the plus sign on top of it. Select `R Script` and we are in business. Typically I like to write a quick comment to start this script that describes what I will be doing. A great way to comment things out in R is to use the `#`. I typically include two `##` because there is a keyboard shortcut that removes one `#` and if I accidently hit this, then I don't have to worry about uncommenting my code. 
+
+# Packages: If You Can Imagine It, They've Probably Got It!
