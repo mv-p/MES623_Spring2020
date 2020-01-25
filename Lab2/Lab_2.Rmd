@@ -324,4 +324,4 @@ It's difficult for me to cover all things that you may need with your homework (
 
 As a note much of the material that is covered in this lecture comes directly from Hadley Wickham's [Advanced R book](https://adv-r.hadley.nz/index.html) which you can find online at the link provided. There is much more information in this book than we cover, but it is a good resource for further dives into `R`. While this book is a bit more advanced, you can check out this [website](https://cran.r-project.org/doc/contrib/Robinson-icebreaker.pdf) for a more basic primer of `R` information. 
 
-testing
+
