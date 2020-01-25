@@ -323,3 +323,5 @@ I suggest if you are not currently comfortable using `R` that you practice a bit
 It's difficult for me to cover all things that you may need with your homework (and outside work) within the hour, so I would highly recommend looking into some of these resources yourself. This will make it much easier when you are working through the problem sets in this class and other classes requiring `R` experience. 
 
 As a note much of the material that is covered in this lecture comes directly from Hadley Wickham's [Advanced R book](https://adv-r.hadley.nz/index.html) which you can find online at the link provided. There is much more information in this book than we cover, but it is a good resource for further dives into `R`. While this book is a bit more advanced, you can check out this [website](https://cran.r-project.org/doc/contrib/Robinson-icebreaker.pdf) for a more basic primer of `R` information. 
+
+testing
