@@ -1,0 +1,214 @@
+---
+title: 'Lab4: Optimization'
+author: "Renato Molina updated by M. Varkony"
+date: "2/3/2020"
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+urlcolor: blue
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Optimization Introduction
+
+The goal of optimization is to solve for the most efficient solution using rigorous computational methods. The solution that we generate from these methods, depends on the objective of the task. In economics examples of optimization problems include, profit maximization or cost minimization. In these two examples the objectives are profit and cost respectively. There are two types of optimization, 1) constrained and 2) unconstrained optimization. For our purposes in this class we will be focusing on constrained optimization.
+
+Within the field of conservation we can think of optimization in terms of site selections.  The best element in site selection can be interpreted as the "best" amount of land set aside as a reserve. The "best" element does not have to be singular, so we can defined optimization as **the selection of the best set of elements (with regard to some criterion) from a set of alternatives.** To find that set, we need some sort of scoring mechanism that allows us to determine if we are actually choosing the best elements, when compared to the alternatives. That scoring mechanism is what we call the **objective function**.
+
+
+The **objective function** is the mechanism that allows us to evaluate different elements with the same criteria. Depending on the nature of the problem, we can maximize or minimize the criteria for those elements. Typically, the set of elements we can choose from are constrained. The nature of these constraints depends on each specific problem (ex: available land or budget caps). 
+
+
+**Summary:** The goal of optimization is to find the set of elements that maximizes or minimizes our objective function. 
+
+
+## Optimization with R: Constrained and Unconstrained
+
+### Unconstrained Optimization
+Let's work on an example where we first consider a function that evaluates the equation $$z=100*(y-x^2)^2+(1-x)^2$$ and takes the vector, $var.vec=\{x, y\}$ as inputs. See the code below:
+
+
+```{r function}
+
+simple.function <- function(var.vec) { 
+    x <- var.vec[1] 
+    y <- var.vec[2] 
+    100 * (y - x^2)^2 + (1 - x)^2
+} 
+
+```
+
+Now we can evaluate the function for any combination of values. Let's try $$x=.5$$ and $$y=.5$$. 
+
+```{r evaluate}
+
+var.vec <- c(.5,.5) 
+
+z <- simple.function(var.vec) 
+
+z 
+```
+
+
+
+Looking at the graph of our function evaluated between 0 to 2 for both x and y we can see that this function appears to have a global minimum near zero at $x= y = 1$. However, eyeballing it doesn't provide much more than a guess. Therefore, a more approximate analysis would be to use `R`. 
+
+```{r, echo=FALSE}
+x <- seq(0,2, .2)
+  y <- x
+  f <- function(x_1 = x ,x_2 = x) {100 * (x_2 - x_1^2)^2 + (1 - x_1)^2 }
+  z <- outer(x, y, f)
+  z[is.na(z)] <- 1
+  op <- par(bg = "white")
+  persp(x, y, z, theta = 30, phi = 30, expand = 0.5, col = "lightblue", ticktype = "detailed")
+  
+  
+```
+
+If we wanted to find that minimum with `R`, we need to define a couple of things:
+
+
+i)	an **objective function** (simple.function in this case) 
+
+
+ii)	**starting values** (a vector $(0,0)$). 
+
+
+iii) **boundaries** for our decision variables $(-\infty,\infty)$ 
+
+
+iv)	the method of optimization 
+
+This is an **unconstrained optimization**, the only restrictions are the upper and lower bounds of the elements that go into the objective function. We also need to decide on a function to use. There are many different optimization methods. For this class, the methods we discuss in the labs will be sufficient to solve the homework problems. However, if you are interested in learning more about optimization you can check out this [website](https://cran.r-project.org/web/views/Optimization.html) for a list on all of the different functions `R` employs to solve optimization problems. There are literally so many different functions that one can use, and how you decide depends on the type of problem you are faced with solving. The best method to determine the appropriate method is to look up what people who have worked on similar problems have used. 
+
+The function we use `optim` works for n-dimensional optimization (in this case we are optimizing over ${x,y}$ so we would have a 2-dimensional optimization). This function is used for continuous functions, which we have so it is a good one to use. 
+
+```{r optimize}
+OO <- optim( 
+      c(0,0), 
+      simple.function, 
+      upper = Inf, 
+      lower = -Inf, 
+      method = "L-BFGS-B") 
+
+OO 
+```
+
+**Note** We include the `upper` and `lower` bound estimates because of the method that we employ. This method `L-BFGS-B` is known as a quais-Newton method. It allows for the box constraints, which is part of the reason we use it in this situation. To learn more about optimization methods you can check out these links [1](https://www.ibm.com/developerworks/library/ba-optimR-john-nash/index.html) or [2](https://cran.r-project.org/web/packages/fitdistrplus/vignettes/Optimalgo.html). Although there are plenty of other resources online for those interested. 
+
+
+The values reported above indicate the optimal combination of [$x,y$] is [`r round(OO$par, 5)`]. that minimize our objective function. The minimum value it achieves using those values is `r round(OO$value,5)`. To explore further, impose additional constraints on the values that minimize the objective function. We can extract the values of our optimal choice of variables by indexing the output element we created above. This allows us to check that work through our optimization to see that it worked appropriately. 
+
+```{r check}
+var.vec <- OO$par # Extract optimal variable values 
+
+y <- simple.function(var.vec) # Evaluate the function at var.vec
+
+y # Report results
+
+```
+
+### Constrained Optimization
+
+Now we can turn to an optimization technique that we will be using specifically in this class. Constrained optimization. 
+
+Suppose that there are 10 lots available for purchase. We will index those lots with the letter $i$ which is a vector from 1 to 10 , $i=\{1,2,\dots,10\}$. Each lot has some habitat potential for an endangered species, let's call it $hp_i=\{0,1,2\}$, meaning that lot $i$ has habitat potential $hp_i$, and it could be $0$, $1$, or $2$, with the latter being the highest habitat potential. If we allow for the possibility of purchasing fractions of a lot, we can define $0\leq f_i\leq 1$ as the fraction we purchase from lot $i$. It follows that $F_i=0$ means we purchase nothing of that lot, while $F_i=1$ means we purchase all of it.  There is also a cost of purchasing each lot, which is given by $c_i$. 
+
+
+As a guideline, we know that the probability of survival of the species is equal to:$$PS=\alpha\sqrt{\sum_{i=1}^{10}hp_i\times F_i}$$
+
+
+**If we want to maximize the probability of survival of the species, but we are constrained by a budget of $12 million. How much of each lot should we purchase? Let's randomly select the habitat potential of each lot as well as the cost of each lot.** 
+
+
+To answer this question we need to set up the problem first. Let's create these lots, their habitat potential, and their cost. Assume the cost of each lot is assigned randomly with values $1 \leq c_i \leq 10$ million. 
+
+```{r pars}
+rm(list = ls())
+set.seed(4200) 
+
+N <- 10 
+
+hp <- sample(0:2,N,replace=T) 
+
+c <- sample(1:10,N,replace=T) 
+
+B <- 12 
+```
+
+Under the assumption that purchasing all land gives probability of survival ($PS$) equal to one, $\alpha$ is a scaling factor that makes $PS=1$ when we buy all lots in their entirety. If you purchase all lots the habitat potential of your purchase is the sum of the habitat potential of all the plots. This is then scaled so that the probability of survival adds to one.
+
+The breakdown of this in algebraic terms looks as follows. If $PS = 1$ and $F_i = 1$ for all $i = 1, \dots, 10$ then we can rearrange the equation such that $$\alpha = \frac{PS}{\sqrt{\sum_{i=1}^{10}hp_i*1}}$$. We then plug in our known values and get $$\alpha = \frac{1}{\sqrt{THP}}$$
+
+```{r add vars}
+THP <- sum(hp) 
+
+alpha <- 1/(THP)^.5 
+
+```
+
+Finally, the most important thing here is our policy function. As with any function, the idea is to give it some arguments and output the probability of survival. Recall that up to this point, we have two vectors or parameters, $\pmb{hp}$ and $\pmb{c}$ (Bold letters represent vectors), respectively; as well as our total budget, $B$, and the parameter $\alpha$. Given any combination of purchases $\pmb{F}$, our probability of survival is then given by $PS=f(\pmb{F},\pmb{hp},\pmb{c},B,\alpha)$. In `R`, we will now create a function that given all the information in the model, estimates the probability of survival of the species for any vector $\pmb{F}$. Note that because `R` always minimizes whenever we are trying to maximize something, we have to multiply the objective function by minus one.    
+
+```{r}
+surv.prob <-function(F0){
+  PB <- -alpha*(F0%*%hp)^.5 
+  as.numeric(PB)
+} 
+
+```
+
+Let's look at our constraints. In our case, how much we spend on a parcel is equal to the cost of the parcel multiplied by how much we purchase from each parcel, we get the total expenditure, which has to be less than our total budget,B. We also imposed a limit on the values $\pmb{F}$ can take, so now we have everything to formalize our problem mathematically: $$\max_{\pmb{F}}\left\{PS=\alpha\sqrt{\sum_{i=1}^{10}hp_i\times F_i}\;\right\}$$ $$\begin{array}{ll} S.T.\\ \pmb{F}\bullet\pmb{c}\leq B\\ 0\leq F_i\leq 1,\;\forall\;i=\{1,..,10\}\end{array}$$
+
+The custom function below is how we ensure that our total cost stays under our budget constraint:
+```{r}
+total.cost <- function(F0){ 
+  TC <- F0%*%c 
+  as.numeric(TC)}
+```
+
+All that is left for us is to solve this problem. To do so, we will install and load the `Rsolnp` package and use the constrained optimization function within it, `solnp` and start with some initial values for the fractions of the lots we plan to purchase. As opposed to the previous example, this is a nonlinear optimizer that uses the Lagrange optimization method. The general formulation is as follows:
+
+```{r}
+library("Rsolnp")
+
+F0 <- rep(1e-3,N) 
+
+
+OO <- solnp(F0, 
+      fun = surv.prob, 
+      ineqfun = total.cost, 
+      ineqUB = B, 
+      ineqLB = 0, 
+      LB = rep(0,N), 
+      UB = rep(1,N)) 
+
+OO
+```
+
+
+The interpretation of the output is the same as in the unconstrained case. \$par indicates the optimal fraction of each lot that should be purchased, and \$value indicates the value or the optimal probability of survival, obtained with those parameters. To finalize, let's make sure the computer actually did what we asked.
+
+```{r}
+# Retrieve optimal lot purchase fractions 
+F_star <- OO$par
+
+# Estimate total cost
+
+TC_star <- F_star%*%c
+
+TC_star
+
+```
+We can see that we are right on point in terms of total cost (TC_star). Obviously, some of the fractions are pretty small, but that's where your expertise comes into play when analyzing what the computer tells you. Broadly speaking, all optimization algorithms work in a similar way as to what we have shown to you here. 
+
+## Question
+
+1. How do you calculate the total cost of the lots?
+
+2. How do you calculate the conservation of performance?
+
+
